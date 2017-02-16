@@ -23,14 +23,14 @@ public class CoffeeMachine {
 	 * Ajoute 50 centimes au crédit
 	 */
 	public void add50cents() {
-		// TODO: ajouter 50 centimes
+		this.cents += 50;
 	}
 
 	/**
 	 * Ajoute un euro (= 100 centimes) au crédit
 	 */
 	public void addEuro() {
-		// TODO: ajouter un euro
+		this.cents += 100;
 	}
 
 	/**
@@ -39,8 +39,7 @@ public class CoffeeMachine {
 	 * @return Renvoie le nombre de centimes
 	 */
 	public int getCents() {
-		// TODO: renvoyer le nombre de centimes dans la machine
-		return 0;
+		return this.cents;
 	}
 
 	/**
@@ -49,10 +48,9 @@ public class CoffeeMachine {
 	 * @return Le nombre de centimes présent <b>avant</b> l'annulation.
 	 */
 	public int cancelAndGetCents() {
-		// TODO: sauver le nombre de centimes présent dans la machine
-		// le remettre à zero
-		// et renvoyer le montant précédement sauvé
-		return 0;
+		int result = this.cents;
+		this.cents = 0;
+		return result;
 	}
 
 	/**
@@ -64,9 +62,10 @@ public class CoffeeMachine {
 	 * @return true si le crédit est suffisant, false sinon
 	 */
 	public boolean getCoffee() {
-		// TODO: vérifier le crédit, si suffisant le décrémenter et renvoyer
-		// true
-		// sinon renvoyer false
+		if (this.cents >= COFFEE_PRICE_IN_CENTS) {
+			this.cents -= COFFEE_PRICE_IN_CENTS;
+			return true;
+		}
 		return false;
 	}
 
