@@ -1,0 +1,37 @@
+section.exercice {
+    text-align: left;
+}
+
+span.exercice {
+    position: absolute;
+    top: 0%; right: 85%;
+    background-color: #CFD8DC;
+    color: #607D8B;
+    font-family: monospace !important;
+    font-size: 20px !important;
+}
+
+.exercice_step{
+    padding-top: 140px;
+}
+
+.exercice_step:before{
+    content: "☞"
+}
+
+mark {
+    background-color: #A5D6A7;
+    color: #4CAF50 !important;
+}
+mark > span {
+    background-color: #A5D6A7;
+    color: #4CAF50 !important;
+}
+mark > span > span{
+    background-color: #A5D6A7;
+    color: #4CAF50 !important;
+}
+
+.nomnom{
+    background-color: #fdf6e2;
+}

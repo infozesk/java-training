@@ -1,0 +1,946 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="vendor/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal.js/css/theme/moon.css">
+    <!-- code syntax coloring -->
+    <link rel="stylesheet" href="vendor/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="vendor/Font-Awesome/css/font-awesome.min.css">
+
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/main.css">
+    <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--  -->
+            <section>
+                <h1>Vous prendrez un café?</h1>
+                Une introduction au langage Java
+            </section>
+            <!--  -->
+            <section data-markdown>
+                <script type="text/template">
+                    ## Nicolas Rouvière - [infozesk](infozesk.com)
+
+                    - Developpeur depuis 2003
+                    - Java, Python
+                    - DevOps dans une équipe de 50 personnes
+                    - Airbus Defence And Space
+                </script>
+            </section>
+            <!--  -->
+            <section data-markdown>
+                <script type="text/template">
+                    ## Formation en CC-BY 4.0
+
+                    - Partage possible
+                    - Modification possible
+                    - Obligation de citer l'auteur
+
+                    Détails -> [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr)
+
+                    ![CC-BY](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/96px-Cc-by_new_white.svg.png "CC-BY logo")
+                </script>
+            </section>
+            <section data-background-color="#e67e22">
+                <h1>Introduction</h1>
+            </section>
+            <!--  -->
+            <section data-markdown data-separator="---">
+                    <script type="text/template">
+                        ## Le langage Java
+                        - Orienté Objet
+                        - Compilé
+                        - Typé fort
+                        ---
+                        ## Les points forts
+                        - Portable / JVM
+                        - Gestion _auto_ de la mémoire
+                        - Un ecosystème complet
+                        - IHM intégré avec swing, JavaFX
+                    </script>
+            </section>
+            <!--  -->
+            <section>
+                <h2>Historique</h2>
+                <table class="reveal">
+                    <tr><th>version</th><th>année</th><th>fin de maintenance</th></tr>
+                    <tr><td>1.0</td><td>1996</td><td>2000</td></tr>
+                    <tr><td>1.5 (J2SE 5.0)</td><td>2002</td><td>2009</td></tr>
+                    <tr><td>1.6 (JSE 6)</td><td>2005</td><td>2018</td></tr>
+                    <tr><td>1.7 (JSE 7)</td><td>2011</td><td >2022</td></tr>
+                    <tr><td>1.8 (JSE 8)</td><td>2014</td><td>---</td></tr>
+                    <tr><td>1.9 (JSE 9)</td><td>2018(?)</td><td>---</td></tr>
+                </table>
+            </section>
+
+            <!--  -->
+            <section data-markdown>
+                <script type="text/template">
+                ## java_training
+                ```bash
+                ├── LICENSE
+                ├── README.md
+                ├── exercices
+                │   ├── exercice_00
+                │   ├── exercice_01
+                │   ├── exercice_02
+                │   └── exercice_03
+                ├── pom.xml
+                └── slides
+                    └── ...
+                ```
+
+                clone depuis:
+                ```bash
+                git clone https://github.com/infozesk/java-training.git
+                cd java-training
+                git submodule init && git submodule update
+                ```
+                </script>
+            </section>
+
+            <!-- EXERCICE -->
+            <section class="exercice">
+                <span class="exercice">Exercice 00</span>
+                <div class="exercice_step">
+                    Créez un fichier <code>HelloWorld.java</code>
+                    <pre><code data-trim data-noescape>
+                    public class HelloWorld{
+                        public static void main(String[] args){
+                            System.out.println("Hello World!");
+                        }
+                    }</code></pre>
+                </div>
+                <div class="fragment exercice_step">
+                    Compilez le
+                    <pre><code data-trim data-noescape>
+                    javac HelloWorld.java
+                    # creates a HelloWorld.class bytecode file
+                    </code></pre>
+                </div>
+                <div class="fragment exercice_step">
+                    Lancez le
+                    <pre><code data-trim data-noescape>
+                    java HelloWorld
+                    # prints Hello World! to stdout
+                    # you may have to use java -cp. HelloWorld
+                    </code></pre>
+                </div>
+            </section>
+
+            <!--  -->
+            <section data-transition="fade-out">
+                <h2>Hello World!</h2>
+                <!-- data-trim: remove whitespace
+                     data-noescape: permit to use <mark>
+                -->
+                Fichier: HelloWorld.java
+                <pre><code data-trim data-noescape>
+                public class HelloWorld{
+                    public static void main(String[] args){
+                        System.out.println("Hello World!");
+                    }
+                }
+                </code></pre>
+                <!-- a blank char to reserve space for next slide -->
+                <span>&zwnj;</span>
+            </section>
+
+            <!--  -->
+            <section data-transition="fade-in">
+                <h2>Hello World!</h2>
+                <!-- data-trim: remove whitespace
+                     data-noescape: permit to use <mark>
+                -->
+                Fichier: <mark>HelloWorld</mark>.java
+                <pre><code data-trim data-noescape>
+                public class <mark>HelloWorld</mark>{
+                    public static void main(String[] args){
+                        System.out.println("Hello World!");
+                    }
+                }
+                </code></pre>
+                <span class="tip">
+                    <i class="fa fa-exclamation" aria-hidden="true" style="color:red"></i>
+nom de fichier == nom de classe
+                </span>
+            </section>
+
+            <!--  -->
+            <section data-transition="fade-in">
+                <h2>Hello World!</h2>
+                <!-- data-trim: remove whitespace
+                     data-noescape: permit to use <mark>
+                -->
+                Fichier: HelloWorld.java
+                <pre><code data-trim data-noescape>
+                public class HelloWorld{
+                    <mark>public static void main</mark>(String[] args){
+                        System.out.println("Hello World!");
+                    }
+                }
+                </code></pre>
+                <span class="tip">
+                    la méthode <mark>main</mark> == le point d'entrée
+                </span>
+            </section>
+
+            <!--  -->
+            <section data-transition="fade-in">
+                <h2>Hello World!</h2>
+                <!-- data-trim: remove whitespace
+                     data-noescape: permit to use <mark>
+                -->
+                Fichier: HelloWorld.java
+                <pre><code data-trim data-noescape>
+                public class HelloWorld{
+                    public static void main(String[] args){
+                        <mark>System.out.println("Hello World!");</mark>
+                    }
+                }
+                </code></pre>
+                <span class="tip">
+                    entre les accolades <mark>{}</mark> == le bloc d'instructions
+                </span>
+            </section>
+
+            <!--  -->
+            <section>
+                <h2>Compilation & éxécution</h2>
+                <img src="imgs/00_compile_run_program.png"/>
+            </section>
+
+            <!--  -->
+            <section data-markdown data-separator="---">
+                <script type="text/template">
+                    ## Avec un IDE
+                    - Compilation automatique
+                    - Execution simplifiée
+                    - Complétion
+                    - Contrôle syntaxique
+                </script>
+            </section>
+            <!--  -->
+            <section>
+                <h2>Environnement de Dévelopement Java</h2>
+                <ul>
+                    <li>Microsoft Visual Studio Code <a href="https://code.visualstudio.com/"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <li>Jetbrains IntelliJ <a href="https://www.jetbrains.com/idea/"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <li>Eclipse <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/neon2"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <li>Netbeans <a href="https://netbeans.org/downloads/"><i class="fa fa-download" aria-hidden="true"></i></a>
+                </ul>
+            </section>
+
+            <!-- EXERCICE 01 -->
+            <section class="exercice">
+                <span class="exercice">Exercice 01</span>
+                <div class="exercice_step">
+                    Importez le projet <code>java-training</code>
+                </div>
+                <div class="fragment exercice_step">
+                    Lancez le <code>main</code> dans <code>org.infozesk.exercice_01.HelloWorld</code>
+                </div>
+                <div class="fragment exercice_step">
+                    Changez le code de la fonction par
+                    <pre><code data-trim data-noescape>
+                    public class HelloWorld{
+                    public static void main(String[] args){
+                            System.out.println("Hello <mark>IDE!</mark>");
+                        }
+                    }
+                    </code></pre>
+                </div>
+                <div class="fragment exercice_step">
+                    Lancez à nouveau le <code>main</code> dans <code>org.infozesk.exercice_01.HelloWorld</code>
+                </div>
+            </section>
+
+            <section class="exercice">
+                <span class="exercice">Exercice 01</span>
+                <div class="exercice_step">
+                    Lancez le test <br/>
+                    <code style="font-size: 50%">src/test/org/infozesk/exercice_01/HelloWorldTest.java</code>
+                    <pre><code data-trim data-noescape>
+                    package org.infozesk.exercice_01;
+                        import org.junit.Test;
+                        public class HelloWorldTest {
+                            @Test
+                            public void test() {
+                                // Simply call the HelloWorld main
+                                HelloWorld.main(new String[0]);
+                            }
+                        }
+                    </code></pre>
+                </div>
+                <div class="exercice_step">
+                    <img src="imgs/exercice_01_test.png" alt="test result">
+                </div>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Test Driven Development <code>TDD</code></h2>
+                <ul>
+                    <li>Ecrire les tests</li>
+                    <li>Ecrire le code jusqu'à ce que les tests passent</li>
+                </ul>
+            </section>
+            <!-- -->
+            <section data-background-color="#e67e22">
+                <h1>Les bases du langages</h1>
+            </section>
+            <!-- -->
+            <section>
+                <h2>Déclaration de variable</h2>
+                <div style="text-align: left;">
+                    <code><font color="#e67e22">type</font>
+                    <font color="#8e44ad">nomVariable</font> =
+                    <font color="#27ae60">valeurInitiale</font>;</code><br/>
+                    <code><font color="#e67e22">type</font>
+                    <font color="#8e44ad">nomVariable</font>;</code>
+                    <pre><code data-trim data-noescape class="java">
+                    int unEntier = 2;
+                    int jeVautZero;
+                    double unPi = 3.14;
+                    String uneChaineDeCaractere = "salut !";
+                    Object unObjet;
+                    </code></pre>
+                </div>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Les types</h2>
+                <strong><font color="#e67e22">n</font></strong>atifs<br/>
+                <strong><font color="#e67e22">O</font></strong>bjets
+            </section>
+
+            <!-- -->
+            <section>
+                <span class="exercice">E02_1</span>
+                <h2>Types natifs</h2>
+                <pre><code data-trim data-noescape class="java">
+                    // boolean
+                    boolean unBooleen = false;
+                    // entiers **non signés**
+                    //   byte | short | int | long
+                    //    8   |  16   | 32  |  64   bits
+                    int unEntier = 12;
+                    // décimaux
+                    //   float | double
+                    //     32  |  64   bits
+                    double pi = 3.141592; // Math.PI;
+                    // Les chaînes de caractères
+                    // char
+                    char leCaractereC = 'c';
+                    </code></pre>
+            </section>
+            <!-- -->
+            <section>
+                <section>
+                    <span class="exercice">E02_2</span>
+                    <h2>L'objet <font color="#e67e22">S</font>tring (1/2)</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        // déclaration et initialisation
+                        String maChaine = "une chaîne"; // -> "une chaîne"
+                        // on peut concaténer des chaînes de caractères
+                        String concat = maChaine + " plus longue";
+                        // -> "une chaîne plus longue"
+                        </code></pre>
+                </section>
+                <!-- -->
+                <section>
+                    <span class="exercice">E02_2</span>
+                    <h2>L'objet <font color="#e67e22">S</font>tring (2/2)</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        // les méthodes les plus utilisées
+                        // indexOf: donne l'index de la chaine
+                        maChaine.indexOf("chaîne"); // -> 4
+                        // length: donne la longueur de la chaine
+                        maChaine.length(); // -> 10
+                        // startsWith / endsWith: rla chaine commence/finit par
+                        maChaine.startsWith("une"); // -> true
+                        maChaine.endsWith("non"); // -> false
+                        // subString: extrait et renvoie une partie de la chaîne
+                        maChaine.substring(4, 10); // -> "chaîne"
+                        </code></pre>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <!-- -->
+                <section>
+                    <span class="exercice">E02_2</span>
+                    <h2>Les tableaux</h2>
+                    <div style="text-align: left;">
+                        <code style="font-size:50%">
+                            <font color="#e67e22">type</font>[]
+                            <font color="#8e44ad">nomVariable</font>;
+                        </code><br/>
+                        <code style="font-size:50%">
+                            <font color="#e67e22">type</font>[]
+                            <font color="#8e44ad">nomVariable</font> = {
+                                <font color="#27ae60">valeur0</font>,
+                                <font color="#27ae60">valeur1</font>, ...};
+                        </code><br/>
+                        <code style="font-size:50%">
+                            <font color="#e67e22">type</font>[]
+                            <font color="#8e44ad">nomVariable</font> = <font color="#E91E63">new</font>
+                            <font color="#e67e22">type</font>[<font color="#27ae60">taille</font>];
+                        </code><br/>
+
+                        <pre><code data-trim data-noescape class="java">
+                        // un tableau d'entier de longueur 10
+                        int[] tableauEntier = new int[10];
+                        int[] tableauEntier2 = { 0, 1, 2, 3, 4 };
+                        // un tableau de double
+                        double tableauDouble = {1.0, 2.0, 3.0};
+                        // une matrice de String
+                        String[][] indices = { { "0-0", "0-1", "0-2" },
+                                               { "1-0", "1-1", "1-2" } };
+                        </code></pre>
+                    </div>
+                </section>
+
+                <!-- -->
+                <section>
+                    <span class="exercice">E02_2</span>
+                    <h2>Les tableaux</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        // Changer la valeur d'un élément
+                        tableauEntier[0] = 100;
+
+                        // Accéder aux élements
+                        System.out.println(tableauEntier[0]); // affiche 0
+                        System.out.println(tableauDouble[1]); // affiche 2.0
+                        System.out.println(indices[1][2]); // affiche 1-2
+                        </code></pre>
+                </section>
+            </section>
+            <!-- -->
+            <section>
+                <section>
+                    <span class="exercice">E02_3</span>
+                    <h2>Classes de base</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        // Une liste de T
+                        // ArrayList&lt;T> = new ArrayList&lt;>();
+                        // Un dictionnaire de &lt;U,V>
+                        // HashMap&lt;String, Integer> mois = new HashMap&lt;>();
+                    </code></pre>
+                </section>
+
+                <section>
+                    <span class="exercice">E02_3</span>
+                    <h2>ArrayList</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        ArrayList&lt;Integer> listeEntiers = new ArrayList&lt;>(); // []
+                        listeEntiers.add(1); // [1]
+                        listeEntiers.add(3); // [1, 3]
+                        listeEntiers.remove(0); // [3]
+                        listeEntiers.size(); // -> 1
+                        System.out.println("la liste contient " +
+                                        listeEntiers.size() +
+                                        " élément");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <span class="exercice">E02_3</span>
+                    <h2>HashMap</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        HashMap&lt;String, Integer> mois = new HashMap&lt;>();
+                        mois.put("janvier", 31);
+                        mois.put("février", 28);
+                        System.out.println("février a " +
+                                        mois.get("février") +
+                                        " jours");
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Packages</h2>
+                <p class="reveal">groupe de classes</p>
+                <p class="reveal">définit le dossier où doit se trouver la classe</p>
+                <div>
+                    <code><font color="#e67e22">package</font>
+                    <font color="#8e44ad">org.infozesk.formation</font>;</code><br/>
+                    <pre><code data-trim data-noescape class="bash">
+                    src
+                    └── main
+                       └── java
+                            └── <font color="#8e44ad">org
+                                └── infozesk
+                                    └── formation</font>
+                                        ├── MaClasse.java
+                                        ├── MaClasse2.java
+                                        └── (...)
+                    </code></pre>
+                </div>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Imports</h2>
+                <p class="reveal">Les classes venant d'un <strong>autre</strong> package doivent être importées.</p>
+                <pre><code data-trim data-noescape class="java">
+                import java.util.ArrayList;
+                import java.util.HashMap;
+                </code></pre>
+            </section>
+
+            <section>
+                <span class="exercice">E02_3</span>
+                <h2>package - imports - classe</h2>
+
+                <p style="text-align: left;">La classe E02_3_BaseObjects
+                    <ul style="text-align: left;">
+                        <li>est dans org.infozesk.exercice_02</li>
+                        <li>utilise ArrayList et HashMap</li>
+                    </ul>
+                </p>
+                <pre><code data-trim data-noescape class=" java ">
+                    package org.infozesk.exercice_02;
+
+                    import java.util.ArrayList;
+                    import java.util.HashMap;
+
+                    public class E02_3_BaseObjects {(...)}
+                </code></pre>
+
+
+            </section>
+
+            <!-- -->
+            <section>
+                <section>
+                    <h2>Structures de Contrôle</h2>
+                    <ul>
+                        <li><code>if/then/else</code></li>
+                        <li><code>switch/case</code></li>
+                        <li><code>for/while</code></li>
+                    </ul>
+                </section>
+                <section>
+                    <span class="exercice">E02_5</span>
+                    <h1>if/then/else</h1>
+                    <pre><code data-trim data-noescape class="java">
+                        if (entier == 0) {
+                            System.out.println("Entier vaut 0");
+                        } else if (entier == 1) {
+                            System.out.println("Entier vaut 1");
+                        } else {
+                            System.out.println("Entier ne vaut ni 0, ni 1");
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <span class="exercice">E02_5</span>
+                    <h1>switch/case</h1>
+                    <pre><code data-trim data-noescape class="java">
+                        switch (entier) {
+                        case 0:
+                            System.out.println("Entier vaut 0");
+                            break;
+                        case 1:
+                            System.out.println("Entier vaut 1");
+                            break;
+                        default:
+                            System.out.println("Entier ne vaut ni 0, ni 1");
+                            break;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <span class="exercice">E02_5</span>
+                    <h1>for</h1>
+                    <pre><code data-trim data-noescape class="java">
+                        // parcours classique
+                        for (int i = 0; i < array.length; i++) {
+                            System.out.println("array[" + i + "]= " + array[i]);
+                        }
+                        // ou a la mode iterable
+                        for (int i : array) {
+                            System.out.println("array[" + i + "]= " + array[i]);
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <span class="exercice">E02_5</span>
+                    <h1>while</h1>
+                    <pre><code data-trim data-noescape class="java">
+                        int i = 0;
+                        while (i < array.length) {
+                            System.out.println("array[" + i + "]= " + array[i]);
+                            i++;
+                        }
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <section>
+                    <h2>Déclaration de méthode</h2>
+                    <div style="text-align: left; font-size: 50%">
+                        <code>
+                            <!-- No param -->
+                            <font color="#8e44ad">modifier*</font>
+                            <font color="#e67e22">type</font>
+                            <font color="#27ae60">nomMethode</font>(){...}<br/>
+                            <!-- param -->
+                            <font color="#8e44ad">modifier*</font>
+                            <font color="#e67e22">type</font>
+                            <font color="#27ae60">nomMethode</font>(<font color="#e67e22">type</font> <font color="#27ae60">nomParam</font>){...}<br/>
+                        </code>
+                    </div>
+                    <pre><code data-trim data-noescape class="java">
+                        // sans modifiers
+                        int random(){} // renvoie un entier
+                        int somme(int a, int b){} // renvoie la somme
+                        // avec modifiers
+                        public int getUnEntier(){}
+                        private double getUnDoublePrive(){}
+                        protected static String getUneConstante(){}
+                    </code></pre>
+                </section>
+
+                <!-- -->
+                <section>
+                    <h2>Polymorphisme</h2>
+                    <pre><code data-trim data-noescape class="java">
+                        // on concatène des entiers
+                        String concat(int a, int b){return ""+a+", "+b;}
+                        // on concatène des String
+                        String concat(String a, String b){return a+b;}
+                    </code></pre>
+                </section>
+
+                <!-- -->
+                <section>
+                    <h2>Portée des variables</h2>
+                    <p>Les paramètres natifs sont <font color="#e67e22">copiés</font></p>
+                    <p>Les objets sont passés en <font color="#8e44ad">référence</font></p>
+                </section>
+
+                <section>
+                    <span class="exercice">E02_6</span>
+                    <h3>natifs: passage par copie</h3>
+                    <pre><code data-trim data-noescape class="java" >
+                        public static void main(String[] args) {
+                            // passage par copie pour les types natifs: int / bool / String
+                            int unEntier = 0;
+                            // On va tenter de modifier a dans la méthode
+                            passageParametre(unEntier);
+                            // Au retour unEntier vaut toujours 0
+                        }
+                        public static void passageParametre(int unEntier) {
+                            unEntier = unEntier + 1;
+                        }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <span class="exercice">E02_6</span>
+                    <h3>tableaux et objets: passage par reférence</h3>
+                    <pre><code data-trim data-noescape class="java" >
+                        public static void main(String[] args) {
+                            // passage par référence pour les objets
+                            Point unPoint = new Point(0, 0);
+                            passageParametre(unPoint);
+                            //unPoint a été modifié !
+                            // il vaut maintenant (100, 0)
+                        }
+                        public static void passageParametre(Point unPoint) {
+                            unPoint.x = 100;
+                        }
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- -->
+            <section data-background-color="#e67e22 ">
+                <h1>Le langage Objet</h1>
+            </section>
+
+            <!-- -->
+            <section>
+                <section>
+                    <h2>Attributs et méthodes</h2>
+                    <p>Les <font color="#e67e22">attributs</font> sont les états d'un objet.</p>
+                    <p>Les <font color="#8e44ad">méthodes</font> sont les actions sur un objet.</p>
+                </section>
+                <section data-transition="fade-in fade-out">
+                    <h2>Exercice</h2>
+                    <p>Choisir un type d'Objet, et trouver ses <font color="#e67e22">attributs</font>
+                    et <font color="#8e44ad">méthodes</font> (5 minutes)</p>
+                    <div >
+                        <table class="reveal">
+                            <tr><th>Objet</th><th><font color="#e67e22">attributs</font></th><th><font color="#8e44ad">méthodes</font></th></tr>
+                            <tr><td>Fruit</td><td></td><td></td></tr>
+                            <tr><td>Voiture</td><td></td><td></td></tr>
+                        </table>
+                    </div>
+                </section>
+                <section data-transition="fade-in fade-out">
+                    <h2>Exercice</h2>
+                    <div >
+                        <table class="reveal">
+                            <tr><th>Objet</th><th><font color="#e67e22">attributs</font></th><th><font color="#8e44ad">méthodes</font></th></tr>
+                            <tr><td>Fruit</td><td>couleur, poids, acidité, estMangée</td><td>manger, pourrir</td></tr>
+                            <tr><td>Voiture</td><td>démarrée, vitesse, marque</td><td>démarrer, accélerer, freiner, stopper</td></tr>
+                        </table>
+                    </div>
+                </section>
+                <section  data-transition="fade-in">
+                    <h2>Exercice</h2>
+                    <div >
+                        <table class="reveal">
+                            <tr><th>Objet</th><th><font color="#e67e22">attributs</font></th><th><font color="#8e44ad">méthodes</font></th></tr>
+                            <tr><td>Fruit</td><td>couleur, poids, acidité, <mark>estMangée</mark></td><td><mark>manger</mark>, pourrir</td></tr>
+                            <tr><td>Voiture</td><td>démarrée, <mark>vitesse</mark>, marque</td><td>démarrer, <mark>accélerer, freiner</mark>, stopper</td></tr>
+                        </table>
+                    </div>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Le mot clé Statique</h2>
+                <code style="color:#e67e22;">static</code> = pour toutes les instances</li>
+
+                <table class="reveal fragment">
+                    <tr><th>Objet</th><th><font color="#e67e22">statiques</font></th><th>pas statique</th></tr>
+                    <tr><td>Voiture</td><td>nombreDeRoues</td><td>pressionPneus, poids</td></tr>
+                    <tr><td>Satellite</td><td>constanteGravitationnelle</td><td>vitesse</td></tr>
+                </table>
+            </section>
+
+            <!-- -->
+            <section>
+                <section>
+                    <h2>UML</h2>
+                    <p><b>L</b>angage de <b>M</b>odélisation <b>U</b>nifié</p>
+                    <p>langage/méthode de conception</p>
+                    <p>Des tonnes de diagrammes et de vues</p>
+                    <p><a href="uml.org">http://uml.org</a> | <a href="https://fr.wikipedia.org/wiki/Diagramme_de_classes">wikipedia</a></p>
+                </section>
+                <section>
+                    <h2>Diagramme de classe</h2>
+                    <canvas class="nomnom" id="diagrammeClasse"></canvas>
+                </section>
+                <section>
+                    <h2>Diagramme de cas d'utilisation</h2>
+                    <canvas class="nomnom" id="diagrammeCasUtilisation"></canvas>
+                </section>
+                <section>
+                    <h2>Diagramme d'activité</h2>
+                    <canvas class="nomnom" id="diagrammeActivite"></canvas>
+                    <canvas class="nomnom" id="diagrammeActivite2"></canvas>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <section>
+                    <h2>Héritage</h2>
+                    <pre><code data-trim data-noescape class="java" >
+                        public static void main(String[] args) {
+                            // passage par copie pour les types natifs: int / bool / String
+                            int unEntier = 0;
+                            // On va tenter de modifier a dans la méthode
+                            passageParametre(unEntier);
+                            // Au retour unEntier vaut toujours 0
+                        }
+                        public static void passageParametre(int unEntier) {
+                            unEntier = unEntier + 1;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Héritage</h2>
+                    <canvas class="nomnom" id="diagrammeHeritage"></canvas>
+                </section>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Modificateurs d'accès</h2>
+                <table class="reveal">
+                    <tr><th>mod</th><th>classe</th><th>package</th><th>class fille</th><th>monde</th></tr>
+                    <tr>
+                        <td><code>public</code></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                    </tr>
+                    <tr>
+                        <td><code>protected</code></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                    </tr>
+                    <tr>
+                        <td><i>default</i></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                    </tr>
+                    <tr>
+                        <td><code>private</code></td>
+                        <td><font color="#2ecc71">Y</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                        <td><font color="#e74c3c">N</font></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Classes abstraites</h2>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Interface</h2>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Les exceptions</h2>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Les types génériques</h2>
+            </section>
+
+            <!-- -->
+            <section data-background-color="#e67e22 ">
+                <h1>Streams et <code>λ</code></h1>
+            </section>
+
+            <!-- -->
+            <section data-background-color="#e67e22 ">
+                <h1>Un autre café</h1>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Liens</h2>
+                <ul>
+                    <li><a href="http://docs.oracle.com/javase/tutorial/java/TOC.html ">The Java Tutorials</a></li>
+                    <li><a href="http://overapi.com/java">overapi.com/java</a></li>
+                    <li><a href="https://www.tutorialspoint.com/java/">tutorialspoint</a></li>
+                </ul>
+            </section>
+
+            <!-- -->
+            <section>
+                <h2>Ecosystème java</h2>
+                <ul>
+                    <li>Ant</li>
+                    <li>Maven</li>
+                    <li>Checkstyle</li>
+                </ul>
+            </section>
+            <!-- -->
+            <section>
+                <h2>Fait avec</h2>
+                <ul>
+                    <li><a href="https://github.com/hakimel/reveal.js/ ">Reveal.js</a>: HTML presentation framework</li>
+                    <li><a href="http://www.nomnoml.com/">nomnoml</a>: UML diagram</li>
+                    <li><a href="http://dmitrybaranovskiy.github.io/raphael/">Raphaël</a>: SVG diagram</li>
+                    <li><a href="http://fontawesome.io/">Font-Awesome</a>: Icons</li>
+                </ul>
+
+            </section>
+
+            <!-- -->
+            <section data-background-color="#8e44ad ">
+                <h1>Merci</h1>
+                remarques -> <a href="mailto:infozesk@gmail.com ">infozesk@gmail.com</a>
+            </section>
+
+            <!-- code graveyard -->
+            <section>
+                <section data-background-color="#e67e22 ">
+                    <h1>Les slides qui me servent d'exemple</h1>
+                </section>
+                <section>
+                    <h2>Un dessin avec Raphael.js</h2>
+                    <div id="draw"></div>
+                </section>
+                <section>
+                    <div style="width: 60%; background: rgb(249,145,87); display: inline-block; ">
+                        Un coucou
+                    </div>
+
+                    <div style="width: 40%; background: rgb(249,00,87); display: inline-block; ">
+                        coucou
+                    </div>
+                    <div class="fragment ">
+                        <div style="text-align: left; background-color: rgb(17, 17, 17); width: 400%; height: 400%; position: absolute; top: -150%; left: -150%; opacity: 0.8; "></div>
+                        <h2 style="font-weight: bold; position: absolute; top: 95%; right: 0px; ">
+                            <font color="#af0 ">apply.</font>
+                        </h2>
+                    </div>
+                </section>
+
+            </section>
+
+
+
+</div>
+
+
+
+
+</div>
+<script src="vendor/reveal.js/lib/js/head.min.js"></script>
+<script src="vendor/reveal.js/js/reveal.js"></script>
+
+<!--Raphael permits to draw SVG-->
+<script src="js/raphael.min.js"></script>
+<!--nomnoml permits to draw UML-->
+<script src="vendor/nomnoml/lib/lodash.min.js"></script>
+<script src="vendor/nomnoml/lib/dagre.min.js"></script>
+<script src="vendor/nomnoml/dist/nomnoml.js"></script>
+
+<!--My custom script-->
+<script src="js/main.js"></script>
+<script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'vendor/reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+            { src: 'vendor/reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            { src: 'vendor/reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // Syntax highlight for <code> elements
+            { src: 'vendor/reveal.js/plugin//highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+            { src: 'vendor/reveal.js/plugin/notes/notes.js' }
+        ]
+    });
+</script>
+</body>
+
+</html>

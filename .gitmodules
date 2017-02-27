@@ -1,0 +1,9 @@
+[submodule "slides/reveal.js"]
+	path = slides/vendor/reveal.js
+	url = https://github.com/hakimel/reveal.js.git
+[submodule "slides/vendor/Font-Awesome"]
+	path = slides/vendor/Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "slides/vendor/nomnoml"]
+	path = slides/vendor/nomnoml
+	url = https://github.com/skanaar/nomnoml.git

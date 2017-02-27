@@ -16,12 +16,18 @@
 	</organization>
 
 	<scm>
-		<url>git@github.com:infozesk/java-training.git</url>
-		<developerConnection>infozesk</developerConnection>
+		<url>http://github.com/infozesk/java-training</url>
+		<developerConnection>scm:git:http://github.com/infozesk/java-training.git</developerConnection>
 	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+		<!-- by default do not skip tests
+				override this property in project that fail tests on purpose
+				surch as exercice_10 -->
+		<skipTests>false</skipTests>
 	</properties>
 
 	<dependencies>
@@ -32,6 +38,19 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <skipTests>${skipTests}</skipTests>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 	<modules>
 		<module>exercices</module>
