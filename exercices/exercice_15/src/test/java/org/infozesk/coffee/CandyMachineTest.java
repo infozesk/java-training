@@ -26,6 +26,12 @@ public class CandyMachineTest {
 		Assert.assertFalse(machine.getCandy(CandyMachine.CROCODILE_TYPE));
 		// et il reste 10cts
 		Assert.assertEquals(10, machine.getCents());
+
+		// si je demande nimporte quoi
+		int nimporteQuoi = -1;
+		Assert.assertFalse(machine.getCandy(nimporteQuoi));
+		nimporteQuoi = 3;
+		Assert.assertFalse(machine.getCandy(nimporteQuoi));
 	}
 
 	@Test
