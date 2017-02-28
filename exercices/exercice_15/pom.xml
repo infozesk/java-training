@@ -9,6 +9,6 @@
   </parent>
   <artifactId>exercice_15</artifactId>
   <properties>
-    <skipTests>true</skipTests>
+    <skipTests>false</skipTests>
   </properties>
 </project>
