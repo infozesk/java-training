@@ -27,8 +27,17 @@ public class CandyMachine extends VendingMachine {
 	 * @return true si le crédit est suffisant, false sinon
 	 */
 	public boolean getCandy(int typeDeBonbon) {
-		// TODO: écrire la fonction.
 		// attention le type de bonbon peut ne pas etre entre 0 et PRIX.length !
+		if (typeDeBonbon < 0 || typeDeBonbon >= PRIX.length) {
+			System.out.println("Type de bonbon inconnu " + typeDeBonbon);
+			return false;
+		}
+		// on a un type de bonbon connu
+		int prixDuBonbonDemande = PRIX[typeDeBonbon];
+		if (prixDuBonbonDemande <= getCents()) {
+			setCents(getCents() - prixDuBonbonDemande);
+			return true;
+		}
 		return false;
 	}
 
